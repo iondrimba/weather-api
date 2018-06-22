@@ -14,4 +14,4 @@ app.get('/', function(req, res) {
   res.status(200).send(data);
 });
 
-app.listen(PORT, () => console.log("app running on port.", server.address().port));
+app.listen(PORT, () => console.log("app running on port.", app.address().port));
