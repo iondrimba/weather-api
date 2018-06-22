@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "cross-env NODE_ENV=production node ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
@@ -22,5 +23,8 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0"
   }
 }
