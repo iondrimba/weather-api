@@ -7,7 +7,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
   const data = {
     message: 'Welcome to our restful API'
   };
@@ -15,10 +15,10 @@ app.get('/', function(req, res) {
   res.status(200).send(data);
 });
 
-app.get('/api', function(req, res) {
+app.get('/api', async (req, res) => {
   const secret = process.env.DARK_SKY_API_CODE;
   const endpoint = (latitude, longitude) => `https://api.darksky.net/forecast/${secret}/${latitude},${longitude}`;
-  const data = getWeatherCondition(endpoint(req.query.latitude, req.query.longitude));
+  const data = await getWeatherCondition(endpoint(req.query.latitude, req.query.longitude));
 
   res.status(200).send(data);
 });
@@ -28,11 +28,7 @@ const getWeatherCondition = async (url) => {
     const response = await fetch(url);
     const result = await response.json();
 
-    return {
-      response,
-      result
-    };
-
+    return result;
   } catch (error) {
     return error.message;
   }
