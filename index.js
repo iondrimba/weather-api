@@ -28,7 +28,11 @@ const getWeatherCondition = async (url) => {
     const response = await fetch(url);
     const result = await response.json();
 
-    return result;
+    return {
+      response,
+      result
+    };
+
   } catch (error) {
     return error.message;
   }
