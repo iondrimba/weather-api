@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser');
+const fetch = require("node-fetch");
 const PORT = process.env.PORT || 5000;
 const app = express();
 
@@ -13,5 +14,24 @@ app.get('/', function(req, res) {
 
   res.status(200).send(data);
 });
+
+app.get('/api', function(req, res) {
+  const secret = process.env.DARK_SKY_API_CODE;
+  const endpoint = (latitude, longitude) => `https://api.darksky.net/forecast/${secret}/${latitude},${longitude}`;
+
+  const data = getWeatherCondition(endpoint(req.query.latitude, req.query.longitude));
+
+  res.status(200).send(data);
+});
+
+const getLocation = async (url) => {
+  try {
+    const response = await fetch(url);
+
+    return await response.json();
+  } catch (error) {
+    return error.message;
+  }
+};
 
 const server = app.listen(PORT, () => console.log(`app running on port: ${server.address().port}`));

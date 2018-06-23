@@ -22,7 +22,8 @@
   "homepage": "https://github.com/iondrimba/weather-api#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "node-fetch": "^2.1.2"
   },
   "devDependencies": {
     "cross-env": "^5.2.0"
