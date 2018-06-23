@@ -18,13 +18,12 @@ app.get('/', function(req, res) {
 app.get('/api', function(req, res) {
   const secret = process.env.DARK_SKY_API_CODE;
   const endpoint = (latitude, longitude) => `https://api.darksky.net/forecast/${secret}/${latitude},${longitude}`;
+  const data = getWeatherCondition(endpoint(req.query.latitude, req.query.longitude));
 
-  // const data = getWeatherCondition(endpoint(req.query.latitude, req.query.longitude));
-
-  res.status(200).send(endpoint(req.query.latitude, req.query.longitude));
+  res.status(200).send(data);
 });
 
-const getLocation = async (url) => {
+const getWeatherCondition = async (url) => {
   try {
     const response = await fetch(url);
 
