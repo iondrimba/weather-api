@@ -28,9 +28,20 @@ app.get('/api', async (req, res) => {
   res.status(200).send(data);
 });
 
-const getWeatherCondition = async (url) => {
+app.get('/api/ip', async (req, res) => {
+  const endpoint = (ip) => `http://api.ipstack.com/${ip}`;
+  const data = await getGeolocationByIp(endpoint(req.query.ip));
+
+  res.status(200).send(data);
+});
+
+const getGeolocationByIp = async (url) => {
+  const params = {
+    access_key: process.env.APP_IP_STACK,
+  };
+
   try {
-    const response = await fetch(url);
+    const response = await fetch(addQueryParams(url, params));
     const result = await response.json();
 
     return result;
@@ -38,5 +49,15 @@ const getWeatherCondition = async (url) => {
     return error.message;
   }
 };
+
+const addQueryParams = (url, params) => {
+  let queryString = '';
+
+  Object.entries(params).forEach(([key, value]) => {
+    queryString += `${key}=${value}&`;
+  });
+
+  return `${url}?${encodeURI(queryString)}`;
+}
 
 const server = app.listen(PORT, () => console.log(`app running on port: ${server.address().port}`));
