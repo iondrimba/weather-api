@@ -35,6 +35,17 @@ app.get('/api/ip', async (req, res) => {
   res.status(200).send(data);
 });
 
+const getWeatherCondition = async (url) => {
+  try {
+    const response = await fetch(url);
+    const result = await response.json();
+
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};
+
 const getGeolocationByIp = async (url) => {
   const params = {
     access_key: process.env.APP_IP_STACK,
