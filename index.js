@@ -45,12 +45,12 @@ app.get('/api/geolocation', async (req, res) => {
     apiKey: process.env.OPENCAGE_APIKEY
   });
 
-  geocoder.geocode(`${req.query.latitude},${req.query.longitude}`, (err, res) => {
+  geocoder.geocode(`${req.query.latitude},${req.query.longitude}`, (err, result) => {
     if(err) {
       res.status(400).send(err);
     }
 
-    res.status(200).send(res);
+    res.status(200).send(result);
   });
 });
 
