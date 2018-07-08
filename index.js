@@ -2,8 +2,10 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const fetch = require("node-fetch");
 const compression = require('compression');
+const NodeGeocoder = require('node-geocoder');
 const PORT = process.env.PORT || 5000;
 const app = express();
+
 
 app.use(compression());
 app.use(bodyParser.json());
@@ -35,6 +37,21 @@ app.get('/api/ip', async (req, res) => {
   const data = await getGeolocationByIp(endpoint(req.query.ip));
 
   res.status(200).send(data);
+});
+
+app.get('/api/geolocation', async (req, res) => {
+  const geocoder = NodeGeocoder({
+    provider: 'opencage',
+    apiKey: process.env.OPENCAGE_APIKEY
+  });
+
+  geocoder.geocode(`${req.query.latitude},${req.query.longitude}`, (err, result) => {
+    if(err) {
+      res.status(400).send(err);
+    }
+
+    res.status(200).send(result);
+  });
 });
 
 const getWeatherCondition = async (url) => {
