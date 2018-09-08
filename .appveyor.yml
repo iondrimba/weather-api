@@ -4,6 +4,7 @@ init:
 install:
   - ps: Install-Product node $env:nodejs_version
   - npm install -g npm
+  - npm install -g jest-cli
   - npm i
 test_script:
   - npm test
