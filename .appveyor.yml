@@ -6,7 +6,6 @@ install:
   - npm install -g npm
   - npm i
 test_script:
-  - npm run lint
   - npm test
 build: off
 matrix:
