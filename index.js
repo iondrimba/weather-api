@@ -1,20 +1,31 @@
 const express = require('express')
 const bodyParser = require('body-parser');
-const fetch = require("node-fetch");
+const fetch = require('node-fetch');
+const helmet = require('helmet');
 const compression = require('compression');
 const NodeGeocoder = require('node-geocoder');
 const PORT = process.env.PORT || 5000;
 const app = express();
 
-
+app.use(helmet());
+app.use(helmet.xssFilter());
+app.use(helmet.xframe());
+app.use( helmet.hidePoweredBy() ) ;
+app.use( helmet.hsts( { maxAge: 7776000000 } ) ) ;
+app.use( helmet.frameguard( 'SAMEORIGIN' ) ) ;
+app.use( helmet.xssFilter( { setOnOldIE: true } ) ) ;
+app.use( helmet.noSniff() ) ;
+app.use(helmet.csp({ defaultSrc: ["'self'"] }));
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+
+app.use( function( req, res, next ) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+
+  next() ;
+} ) ;
 
 app.get('/', function (req, res) {
   const data = {
