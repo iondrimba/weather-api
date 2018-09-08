@@ -8,5 +8,6 @@ npm-debug.log
 .DS_Store
 
 # Docker
+coverage
 Dockerfile
 docker-compose.yml
