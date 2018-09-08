@@ -1,0 +1,7 @@
+ratings:
+  paths:
+    - "index.js"
+exclude_paths:
+  - "coverage"
+  - "spec"
+  - "node_modules"
