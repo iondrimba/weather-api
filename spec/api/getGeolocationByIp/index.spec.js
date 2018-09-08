@@ -1,4 +1,4 @@
-const getGeolocationByIp = require('../../api/getGeolocationByIp');
+const getGeolocationByIp = require('../../../api/getGeolocationByIp');
 const mockdataSucess = require('./mockdata.json');
 const mockInvalidKey = require('./mockInvalidKey.json');
 const mockMissingKey = require('./mockMissingKey.json');
