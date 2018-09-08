@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./index.js",
     "lint": "./node_modules/.bin/eslint index.js ./spec/*.js",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "engines": {
     "node": "8.9.1"
