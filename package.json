@@ -33,6 +33,7 @@
     "cross-env": "^5.2.0",
     "eslint": "^5.5.0",
     "eslint-config-google": "^0.10.0",
+    "eslint-plugin-jest": "^21.22.0",
     "jest": "^23.5.0"
   }
 }

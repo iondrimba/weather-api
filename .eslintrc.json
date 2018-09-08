@@ -1,5 +1,5 @@
 {
-  "extends": "google",
+  "extends": ["google", "plugin:jest/recommended"],
   "parserOptions": {
     "ecmaVersion": 8,
     "sourceType": "module",
@@ -7,7 +7,9 @@
       "module": true
     }
   },
+  "plugins": ["jest"],
   "env": {
+    "jest/globals": true,
     "node": true,
     "es6": true
   },
@@ -15,6 +17,11 @@
     "NodeGeocoder": true
   },
   "rules": {
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
     "semi": 2,
     "new-cap": 0,
     "linebreak-style": 0,
