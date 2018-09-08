@@ -1,10 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const fetch = require('node-fetch');
 const helmet = require('helmet');
 const compression = require('compression');
-const NodeGeocoder = require('node-geocoder');
 const PORT = process.env.PORT || 5000;
+const index = require('./routes/');
+const api = require('./routes/api');
+const ip = require('./routes/ip');
+const geolocation = require('./routes/geolocation');
 const app = express();
 
 app.use(helmet());
@@ -19,7 +21,6 @@ app.use(helmet.csp({defaultSrc: ['\'self\'']}));
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -27,79 +28,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/', (req, res) => {
-  const data = {
-    message: 'Welcome to our restful API',
-  };
-
-  res.status(200).send(data);
-});
-
-app.get('/api', async (req, res) => {
-  const secret = process.env.DARK_SKY_API_CODE;
-  const baseUrl = 'https://api.darksky.net/forecast';
-  const endpoint = (latitude, longitude) => `${baseUrl}${secret}/${latitude},${longitude}?units=auto`;
-  const data = await getWeatherCondition(endpoint(req.query.latitude, req.query.longitude));
-
-  res.status(200).send(data);
-});
-
-app.get('/api/ip', async (req, res) => {
-  const endpoint = (ip) => `http://api.ipstack.com/${ip}`;
-  const data = await getGeolocationByIp(endpoint(req.query.ip));
-
-  res.status(200).send(data);
-});
-
-app.get('/api/geolocation', async (req, res) => {
-  const geocoder = NodeGeocoder({
-    provider: 'opencage',
-    apiKey: process.env.OPENCAGE_APIKEY,
-  });
-
-  geocoder.geocode(`${req.query.latitude},${req.query.longitude}`, (err, result) => {
-    if (err) {
-      res.status(400).send(err);
-    }
-
-    res.status(200).send(result);
-  });
-});
-
-const getWeatherCondition = async (url) => {
-  try {
-    const response = await fetch(url);
-    const result = await response.json();
-
-    return result;
-  } catch (error) {
-    return error.message;
-  }
-};
-
-const getGeolocationByIp = async (url) => {
-  const params = {
-    access_key: process.env.APP_IP_STACK,
-  };
-
-  try {
-    const response = await fetch(addQueryParams(url, params));
-    const result = await response.json();
-
-    return result;
-  } catch (error) {
-    return error.message;
-  }
-};
-
-const addQueryParams = (url, params) => {
-  let queryString = '';
-
-  Object.entries(params).forEach(([key, value]) => {
-    queryString += `${key}=${value}&`;
-  });
-
-  return `${url}?${encodeURI(queryString)}`;
-};
+app.get('/', index);
+app.get('/api', api);
+app.get('/api/ip', ip);
+app.get('/api/geolocation', geolocation);
 
 app.listen(PORT, () => console.log(`app running on port: ${app.address().port}`));

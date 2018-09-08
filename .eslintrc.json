@@ -11,9 +11,12 @@
     "node": true,
     "es6": true
   },
+  "globals": {
+    "NodeGeocoder": true
+  },
   "rules": {
     "semi": 2,
-    "new-cap": 1,
+    "new-cap": 0,
     "linebreak-style": 0,
     "arrow-body-style": 0,
     "max-len": [

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./index.js",
-    "lint": "./node_modules/.bin/eslint index.js ./spec/*.js",
+    "lint": "./node_modules/.bin/eslint index.js ./spec/*.js ./api/*.js ./routes/*.js ./helpers/*.js",
     "test": "jest --coverage"
   },
   "engines": {
