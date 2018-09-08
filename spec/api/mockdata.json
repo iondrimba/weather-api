@@ -1,0 +1,30 @@
+{
+  "city": "Minamikyushu",
+  "continent_code": "AS",
+  "continent_name": "Asia",
+  "country_code": "JP",
+  "country_name": "Japan",
+  "ip": "221.83.87.170",
+  "latitude": 31.3469,
+  "location": {
+    "calling_code": "81",
+    "capital": "Tokyo",
+    "country_flag": "http://assets.ipstack.com/flags/jp.svg",
+    "country_flag_emoji": "🇯🇵",
+    "country_flag_emoji_unicode": "U+1F1EF U+1F1F5",
+    "geoname_id": 11612540,
+    "is_eu": false,
+    "languages": [
+      {
+        "code": "ja",
+        "name": "Japanese",
+        "native": "日本語"
+      }
+    ]
+  },
+  "longitude": 130.4561,
+  "region_code": "46",
+  "region_name": "Kagoshima",
+  "type": "ipv4",
+  "zip": null
+}
