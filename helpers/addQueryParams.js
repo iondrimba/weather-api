@@ -5,5 +5,7 @@ module.exports = (url, params) => {
     queryString += `${key}=${value}&`;
   });
 
-  return `${url}?${encodeURI(queryString)}`;
+  const queryParams = queryString.length ? `?${encodeURI(queryString)}` : '';
+
+  return `${url}${queryParams}`;
 };
