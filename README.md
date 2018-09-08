@@ -2,3 +2,4 @@
 
 [![Build Status](https://travis-ci.org/iondrimba/weather-api.svg?branch=master)](https://travis-ci.org/iondrimba/weather-api)
 [![Build status](https://ci.appveyor.com/api/projects/status/qa84q4ifb089ilk7?svg=true)](https://ci.appveyor.com/project/iondrimba/weather-api)
+[![Build status](https://david-dm.org/iondrimba/weather-api.svg)](https://david-dm.org/iondrimba/weather-api?view=list)
