@@ -11,13 +11,17 @@ const app = express();
 
 app.use(helmet());
 app.use(helmet.xssFilter());
-app.use(helmet.xframe());
+app.use(helmet.frameguard());
 app.use(helmet.hidePoweredBy());
 app.use(helmet.hsts({maxAge: 7776000000}));
 app.use(helmet.frameguard('SAMEORIGIN'));
 app.use(helmet.xssFilter({setOnOldIE: true}));
 app.use(helmet.noSniff());
-app.use(helmet.csp({defaultSrc: ['\'self\'']}));
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ['\'self\''],
+  },
+}));
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -33,4 +37,4 @@ app.get('/api', api);
 app.get('/api/ip', ip);
 app.get('/api/geolocation', geolocation);
 
-app.listen(PORT, () => console.log(`app running on port: ${app.address().port}`));
+const server = app.listen(PORT, () => console.log(`app running on port: ${server.address().port}`));
