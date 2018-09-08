@@ -1,4 +1,4 @@
-const express = require('express')
+const express = require('express');
 const bodyParser = require('body-parser');
 const fetch = require('node-fetch');
 const helmet = require('helmet');
@@ -10,26 +10,26 @@ const app = express();
 app.use(helmet());
 app.use(helmet.xssFilter());
 app.use(helmet.xframe());
-app.use( helmet.hidePoweredBy() ) ;
-app.use( helmet.hsts( { maxAge: 7776000000 } ) ) ;
-app.use( helmet.frameguard( 'SAMEORIGIN' ) ) ;
-app.use( helmet.xssFilter( { setOnOldIE: true } ) ) ;
-app.use( helmet.noSniff() ) ;
-app.use(helmet.csp({ defaultSrc: ["'self'"] }));
+app.use(helmet.hidePoweredBy());
+app.use(helmet.hsts({maxAge: 7776000000}));
+app.use(helmet.frameguard('SAMEORIGIN'));
+app.use(helmet.xssFilter({setOnOldIE: true}));
+app.use(helmet.noSniff());
+app.use(helmet.csp({defaultSrc: ['\'self\'']}));
 app.use(compression());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 
-app.use( function( req, res, next ) {
+app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 
-  next() ;
-} ) ;
+  next();
+});
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
   const data = {
-    message: 'Welcome to our restful API'
+    message: 'Welcome to our restful API',
   };
 
   res.status(200).send(data);
@@ -37,7 +37,8 @@ app.get('/', function (req, res) {
 
 app.get('/api', async (req, res) => {
   const secret = process.env.DARK_SKY_API_CODE;
-  const endpoint = (latitude, longitude) => `https://api.darksky.net/forecast/${secret}/${latitude},${longitude}?units=auto`;
+  const baseUrl = 'https://api.darksky.net/forecast';
+  const endpoint = (latitude, longitude) => `${baseUrl}${secret}/${latitude},${longitude}?units=auto`;
   const data = await getWeatherCondition(endpoint(req.query.latitude, req.query.longitude));
 
   res.status(200).send(data);
@@ -53,11 +54,11 @@ app.get('/api/ip', async (req, res) => {
 app.get('/api/geolocation', async (req, res) => {
   const geocoder = NodeGeocoder({
     provider: 'opencage',
-    apiKey: process.env.OPENCAGE_APIKEY
+    apiKey: process.env.OPENCAGE_APIKEY,
   });
 
   geocoder.geocode(`${req.query.latitude},${req.query.longitude}`, (err, result) => {
-    if(err) {
+    if (err) {
       res.status(400).send(err);
     }
 
@@ -99,6 +100,6 @@ const addQueryParams = (url, params) => {
   });
 
   return `${url}?${encodeURI(queryString)}`;
-}
+};
 
-const server = app.listen(PORT, () => console.log(`app running on port: ${server.address().port}`));
+app.listen(PORT, () => console.log(`app running on port: ${app.address().port}`));

@@ -5,6 +5,7 @@ before_script:
   - npm install
   - npm install -g jest-cli
 script:
+  - npm run lint
   - npm test
 notifications:
   email: false

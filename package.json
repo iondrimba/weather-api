@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./index.js",
+    "lint": "./node_modules/.bin/eslint index.js",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "engines": {
@@ -29,6 +30,8 @@
     "node-geocoder": "^3.22.0"
   },
   "devDependencies": {
-    "cross-env": "^5.2.0"
+    "cross-env": "^5.2.0",
+    "eslint": "^5.5.0",
+    "eslint-config-google": "^0.10.0"
   }
 }
