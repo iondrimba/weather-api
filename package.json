@@ -23,18 +23,18 @@
   "homepage": "https://github.com/iondrimba/weather-api#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "compression": "^1.7.2",
-    "dotenv": "^6.0.0",
-    "express": "^4.16.3",
-    "helmet": "^3.13.0",
-    "node-fetch": "^2.1.2",
+    "compression": "^1.7.3",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "helmet": "^3.15.0",
+    "node-fetch": "^2.2.1",
     "node-geocoder": "^3.22.0"
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
-    "eslint": "^5.5.0",
+    "eslint": "^5.9.0",
     "eslint-config-google": "^0.10.0",
-    "eslint-plugin-jest": "^21.22.0",
-    "jest": "^23.5.0"
+    "eslint-plugin-jest": "^21.27.2",
+    "jest": "^23.6.0"
   }
 }
