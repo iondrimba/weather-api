@@ -1,30 +1,30 @@
 {
-  "city": "Minamikyushu",
-  "continent_code": "AS",
-  "continent_name": "Asia",
-  "country_code": "JP",
-  "country_name": "Japan",
-  "ip": "221.83.87.170",
-  "latitude": 31.3469,
+  "ip": "85.214.18.16",
+  "type": "ipv4",
+  "continent_code": "EU",
+  "continent_name": "Europe",
+  "country_code": "DE",
+  "country_name": "Germany",
+  "region_code": "BE",
+  "region_name": "Land Berlin",
+  "city": "Berlin",
+  "zip": "12529",
+  "latitude": 52.5167,
+  "longitude": 13.4,
   "location": {
-    "calling_code": "81",
-    "capital": "Tokyo",
-    "country_flag": "http://assets.ipstack.com/flags/jp.svg",
-    "country_flag_emoji": "🇯🇵",
-    "country_flag_emoji_unicode": "U+1F1EF U+1F1F5",
-    "geoname_id": 11612540,
-    "is_eu": false,
+    "geoname_id": 2950159,
+    "capital": "Berlin",
     "languages": [
       {
-        "code": "ja",
-        "name": "Japanese",
-        "native": "日本語"
+        "code": "de",
+        "name": "German",
+        "native": "Deutsch"
       }
-    ]
-  },
-  "longitude": 130.4561,
-  "region_code": "46",
-  "region_name": "Kagoshima",
-  "type": "ipv4",
-  "zip": null
+    ],
+    "country_flag": "http:\/\/assets.ipstack.com\/flags\/de.svg",
+    "country_flag_emoji": "\ud83c\udde9\ud83c\uddea",
+    "country_flag_emoji_unicode": "U+1F1E9 U+1F1EA",
+    "calling_code": "49",
+    "is_eu": true
+  }
 }

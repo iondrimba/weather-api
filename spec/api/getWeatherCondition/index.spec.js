@@ -2,7 +2,7 @@ const getWeatherCondition = require('../../../api/getWeatherCondition');
 const mockdataSucess = require('./mockForecast.json');
 
 describe('getWeatherCondition', () => {
-  beforeEach(() => {
+  beforeAll(() => {
     require('dotenv').config();
   });
 

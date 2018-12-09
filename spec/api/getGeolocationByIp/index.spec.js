@@ -2,6 +2,7 @@ const getGeolocationByIp = require('../../../api/getGeolocationByIp');
 const mockdataSucess = require('./mockdata.json');
 const mockInvalidKey = require('./mockInvalidKey.json');
 const mockMissingKey = require('./mockMissingKey.json');
+const berlinIp = '85.214.18.16';
 
 describe('getGeolocationByIp', () => {
   beforeEach(() => {
@@ -9,7 +10,7 @@ describe('getGeolocationByIp', () => {
   });
 
   it('returns geolocation', async () => {
-    const url = 'http://api.ipstack.com/221.83.87.170';
+    const url = `http://api.ipstack.com/${berlinIp}`;
     const result = await getGeolocationByIp(url);
 
     expect(result).toEqual(mockdataSucess);
@@ -26,7 +27,7 @@ describe('getGeolocationByIp', () => {
     it('returns invalid key error', async () => {
       process.env.APP_IP_STACK = 'xpto';
 
-      const url = 'http://api.ipstack.com/221.83.87.170';
+      const url = `http://api.ipstack.com/${berlinIp}`;
       const result = await getGeolocationByIp(url);
 
       expect(result).toEqual(mockInvalidKey);
@@ -37,7 +38,7 @@ describe('getGeolocationByIp', () => {
     it('returns missing key error', async () => {
       process.env.APP_IP_STACK = '';
 
-      const url = 'http://api.ipstack.com/221.83.87.170';
+      const url = `http://api.ipstack.com/${berlinIp}`;
       const result = await getGeolocationByIp(url);
 
       expect(result).toEqual(mockMissingKey);
