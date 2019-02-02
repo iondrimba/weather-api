@@ -1,5 +1,5 @@
 const getWeatherCondition = require('../../../api/getWeatherCondition');
-const mockdataSucess = require('./mockForecast.json');
+const mockdataSuccess = require('./mockForecast.json');
 
 describe('getWeatherCondition', () => {
   beforeAll(() => {
@@ -12,9 +12,9 @@ describe('getWeatherCondition', () => {
     const endpoint = (latitude, longitude) => `${baseUrl}/${secret}/${latitude},${longitude}?units=auto`;
     const result = await getWeatherCondition(endpoint(-23.5733, -46.6417));
 
-    expect(result.latitude).toEqual(mockdataSucess.latitude);
-    expect(result.longitude).toEqual(mockdataSucess.longitude);
-    expect(result.timezone).toEqual(mockdataSucess.timezone);
+    expect(result.latitude).toEqual(mockdataSuccess.latitude);
+    expect(result.longitude).toEqual(mockdataSuccess.longitude);
+    expect(result.timezone).toEqual(mockdataSuccess.timezone);
   });
 
   it('returns exception message', async () => {
