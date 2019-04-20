@@ -13,7 +13,7 @@ describe('getGeolocationByIp', () => {
     const url = `http://api.ipstack.com/${berlinIp}`;
     const result = await getGeolocationByIp(url);
 
-    expect(result).toEqual(mockdataSucess);
+    expect(result.region_name).toEqual(mockdataSucess.region_name);
   });
 
   it('returns exception message', async () => {
