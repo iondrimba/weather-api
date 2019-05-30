@@ -28,7 +28,7 @@
     "express": "^4.17.1",
     "helmet": "^3.18.0",
     "node-fetch": "^2.6.0",
-    "node-geocoder": "^3.22.0"
+    "node-geocoder": "^3.23.0"
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
