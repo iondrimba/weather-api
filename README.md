@@ -6,7 +6,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/qa84q4ifb089ilk7?svg=true)](https://ci.appveyor.com/project/iondrimba/weather-api)
 [![Build status](https://david-dm.org/iondrimba/weather-api.svg)](https://david-dm.org/iondrimba/weather-api?view=list)
 [![Maintainability](https://api.codeclimate.com/v1/badges/171c13628b6957af5fef/maintainability)](https://codeclimate.com/github/iondrimba/weather-api/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/171c13628b6957af5fef/test_coverage)](https://codeclimate.com/github/iondrimba/weather-api/test_coverage) [![Greenkeeper badge](https://badges.greenkeeper.io/iondrimba/weather-api.svg)](https://greenkeeper.io/)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/171c13628b6957af5fef/test_coverage)](https://codeclimate.com/github/iondrimba/weather-api/test_coverage) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=iondrimba/weather-api)](https://dependabot.com)
 
 ### Third-Party Services
 
