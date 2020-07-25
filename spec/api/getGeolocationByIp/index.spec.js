@@ -4,9 +4,6 @@ const mockInvalidKey = require('./mockInvalidKey.json');
 const mockMissingKey = require('./mockMissingKey.json');
 const berlinIp = '85.214.18.16';
 
-console.log(process.env.APP_IP_STACK);
-console.log(process.env.DARK_SKY_API_CODE);
-
 describe('getGeolocationByIp', () => {
   beforeEach(() => {
     require('dotenv').config();

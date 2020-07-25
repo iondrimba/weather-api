@@ -42,6 +42,8 @@ jobs:
     - run: npm ci
     - uses: paambaati/codeclimate-action@v2.6.0
       env:
+        APP_IP_STACK: ${{ secrets.APP_IP_STACK }}
+        DARK_SKY_API_CODE: ${{ secrets.DARK_SKY_API_CODE }}
         CI: true
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
       with:
