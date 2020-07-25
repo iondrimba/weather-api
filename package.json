@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node -r ./dotenv.js ./index.js",
     "lint": "./node_modules/.bin/eslint .",
-    "test": "jest --coverage",
+    "test": "jest --setupFiles dotenv/config --coverage",
     "coverage": "npm test"
   },
   "engines": {
