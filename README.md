@@ -9,4 +9,4 @@
 ### Third-Party Services
 
 * https://api.darksky.net
-* http://api.ipstack.com
+* [IP Location Finder by KeyCDN](https://tools.keycdn.com/geo)

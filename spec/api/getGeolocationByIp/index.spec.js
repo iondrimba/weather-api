@@ -1,7 +1,5 @@
 const getGeolocationByIp = require('../../../api/getGeolocationByIp');
 const mockdataSucess = require('./mockdata.json');
-const mockInvalidKey = require('./mockInvalidKey.json');
-const mockMissingKey = require('./mockMissingKey.json');
 const berlinIp = '85.214.18.16';
 
 describe('getGeolocationByIp', () => {
@@ -10,39 +8,24 @@ describe('getGeolocationByIp', () => {
   });
 
   it('returns geolocation', async () => {
-    const url = `http://api.ipstack.com/${berlinIp}`;
-    const result = await getGeolocationByIp(url);
+    const url = `https://tools.keycdn.com/geo.json?host=${berlinIp}`;
+    const result = await getGeolocationByIp(url, 'keycdn-tools:https://weather.iondrimbafilho.me');
 
-    expect(result.country_name).toEqual(mockdataSucess.country_name);
-    expect(result.city).toEqual(mockdataSucess.city);
+    expect(result.data.geo.country_name).toEqual(mockdataSucess.country_name);
+    expect(result.data.geo.city).toEqual(mockdataSucess.city);
   });
 
-  it('returns exception message', async () => {
-    const url = 'xpto';
-    const result = await getGeolocationByIp(url);
+  describe('when UserAgent is invalid', () => {
+    it('returns error status', async () => {
+      const error = {
+        status: 'error',
+        description: 'User-Agent not properly defined. Please check the docs: https://tools.keycdn.com/geo',
+      };
 
-    expect(result).toEqual('Only absolute URLs are supported');
-  });
-
-  describe('when invalid SECRET_KEY supplied', () => {
-    it('returns invalid key error', async () => {
-      process.env.APP_IP_STACK = 'xpto';
-
-      const url = `http://api.ipstack.com/${berlinIp}`;
+      const url = `https://tools.keycdn.com/geo.json?host=${berlinIp}`;
       const result = await getGeolocationByIp(url);
 
-      expect(result).toEqual(mockInvalidKey);
-    });
-  });
-
-  describe('when no SECRET_KEY supplied', () => {
-    it('returns missing key error', async () => {
-      process.env.APP_IP_STACK = '';
-
-      const url = `http://api.ipstack.com/${berlinIp}`;
-      const result = await getGeolocationByIp(url);
-
-      expect(result).toEqual(mockMissingKey);
+      expect(result).toEqual(error);
     });
   });
 });
