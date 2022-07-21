@@ -1,11 +1,13 @@
 const fetch = require('node-fetch');
-const addQueryParams = require('../helpers/addQueryParams');
 
-module.exports = async (url) => {
+module.exports = async (url, key) => {
   try {
-    const response = await fetch(addQueryParams(url, {
-      access_key: process.env.APP_IP_STACK,
-    }));
+    const response = await fetch(url, {
+      headers: {
+        'User-Agent': key,
+      },
+    });
+
     const result = await response.json();
 
     return result;
