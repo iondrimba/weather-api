@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node -r ./dotenv.js ./index.js",
-    "lint": "./node_modules/.bin/eslint .",
+    "lint": "./node_modules/.bin/eslint . --fix",
     "test": "jest --setupFiles dotenv/config --coverage",
     "coverage": "npm test"
   },
@@ -27,13 +27,17 @@
     "body-parser": "^2.2.0",
     "compression": "^1.8.0",
     "dotenv": "^16.5.0",
-    "eslint": "^9.25.1",
     "express": "^5.1.0",
     "helmet": "^8.1.0",
     "jest": "^29.7.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.25.1",
     "cross-env": "^7.0.2",
-    "eslint-config-google": "^0.14.0"
+    "eslint": "^9.25.1",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-jest": "^28.11.0",
+    "globals": "^16.0.0"
   }
 }
