@@ -1,5 +1,3 @@
-const fetch = require('node-fetch');
-
 module.exports = async (url) => {
   try {
     const response = await fetch(url);

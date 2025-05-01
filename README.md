@@ -8,5 +8,4 @@
 
 ### Third-Party Services
 
-* https://api.darksky.net
-* [IP Location Finder by KeyCDN](https://tools.keycdn.com/geo)
+* https://www.weatherapi.com/

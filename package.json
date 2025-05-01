@@ -10,8 +10,8 @@
     "coverage": "npm test"
   },
   "engines": {
-    "node": "16.16.0",
-    "npm": "8.11.0"
+    "node": "22.15.0",
+    "npm": "10.9.2"
   },
   "repository": {
     "type": "git",
@@ -24,19 +24,16 @@
   },
   "homepage": "https://github.com/iondrimba/weather-api#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "compression": "^1.7.4",
-    "dotenv": "^8.0.0",
-    "express": "^4.17.1",
-    "helmet": "^4.0.0",
-    "node-fetch": "^2.6.0",
-    "node-geocoder": "^3.23.0"
+    "body-parser": "^2.2.0",
+    "compression": "^1.8.0",
+    "dotenv": "^16.5.0",
+    "eslint": "^9.25.1",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "jest": "^29.7.0"
   },
   "devDependencies": {
     "cross-env": "^7.0.2",
-    "eslint": "^7.5.0",
-    "eslint-config-google": "^0.14.0",
-    "eslint-plugin-jest": "^24.0.1",
-    "jest": "^26.1.0"
+    "eslint-config-google": "^0.14.0"
   }
 }
