@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.16.0]
+        node-version: [22.15.0]
 
     steps:
     - uses: actions/checkout@master
@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.16.0]
+        node-version: [22.15.0]
 
     steps:
     - uses: actions/checkout@master
@@ -42,8 +42,7 @@ jobs:
     - run: npm ci
     - uses: paambaati/codeclimate-action@v2.6.0
       env:
-        APP_IP_STACK: ${{ secrets.APP_IP_STACK }}
-        DARK_SKY_API_CODE: ${{ secrets.DARK_SKY_API_CODE }}
+        WEATHER_API: ${{ secrets.WEATHER_API }}
         CI: true
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
       with:

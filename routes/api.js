@@ -1,10 +1,10 @@
 const getWeatherCondition = require('../api/getWeatherCondition');
 
 module.exports = async (req, res) => {
-  const secret = process.env.DARK_SKY_API_CODE;
-  const baseUrl = 'https://api.darksky.net/forecast';
-  const endpoint = (latitude, longitude) => `${baseUrl}/${secret}/${latitude},${longitude}?units=auto`;
-  const data = await getWeatherCondition(endpoint(req.query.latitude, req.query.longitude));
+  const secret = process.env.WEATHER_API;
+  const baseUrl = 'https://api.weatherapi.com';
+  const endpoint = (ip) => `${baseUrl}/v1/current.json?q=${ip}&lang=pt&key=${secret}`;
+  const data = await getWeatherCondition(endpoint(req.query.ip));
 
   res.status(200).send(data);
 };

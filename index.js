@@ -5,8 +5,6 @@ const compression = require('compression');
 const PORT = process.env.PORT || 5000;
 const index = require('./routes/');
 const api = require('./routes/api');
-const ip = require('./routes/ip');
-const geolocation = require('./routes/geolocation');
 const app = express();
 
 app.use(helmet());
@@ -34,7 +32,5 @@ app.use((req, res, next) => {
 
 app.get('/', index);
 app.get('/api', api);
-app.get('/api/ip', ip);
-app.get('/api/geolocation', geolocation);
 
 const server = app.listen(PORT, () => console.log(`app running on port: ${server.address().port}`));
