@@ -7,6 +7,14 @@
       "module": true
     }
   },
+  "ignorePatterns": [
+    "node_modules/",
+    "dist/",
+    "coverage/",
+    "build/",
+    "public/",
+    "lib/"
+  ],
   "plugins": ["jest"],
   "env": {
     "jest/globals": true,
